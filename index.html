@@ -3,127 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sapien Ops | USA Market Expansion</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Servicios | Red Sapien</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --neon: #00f2ff; --crimson: #ff004c; --bg: #050505; --glass: rgba(255, 255, 255, 0.05); }
-        * { box-sizing: border-box; }
-        body { background: var(--bg); color: white; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; line-height: 1.6; overflow-x: hidden; }
+        :root { --neon: #00f2ff; --bg: #020202; --glass: rgba(255, 255, 255, 0.03); --border: rgba(0, 242, 255, 0.2); }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { background: var(--bg); color: white; font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; line-height: 1.7; overflow-x: hidden; }
+        
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.02) 0%, transparent 80%); z-index: -1; }
+        
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; }
+        .mono { font-family: 'Space Mono', monospace; color: var(--neon); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px; font-weight: 700; }
+        
+        .typewriter { overflow: hidden; border-right: .15em solid var(--neon); white-space: nowrap; margin: 0; letter-spacing: .15em; animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; max-width: fit-content; }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--neon); } }
 
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.08) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
-            z-index: 9999; pointer-events: none; background-size: 100% 3px, 3px 100%;
-        }
-
-        .container { width: 92%; max-width: 1100px; margin: 0 auto; }
-        .mono { font-family: 'Space Mono', monospace; color: var(--neon); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
-
-        header { padding: 100px 0 50px; text-align: left; }
-        h1 { font-size: clamp(2.2rem, 7vw, 4.5rem); line-height: 1.1; margin: 20px 0; font-weight: 800; letter-spacing: -2px; }
+        header { padding: 100px 0 60px; text-align: left; border-bottom: 1px solid var(--border); }
+        h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.1; margin: 20px 0; font-weight: 800; letter-spacing: -2px; }
         .highlight { color: var(--neon); }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 40px 0; }
-        .card { 
-            background: var(--glass); border: 1px solid #222; padding: 35px; 
-            border-radius: 20px; transition: 0.3s;
-        }
-        .card:hover { border-color: var(--neon); }
+        .referral-badge { display: inline-flex; align-items: center; background: var(--glass); padding: 8px 16px; border-radius: 50px; border: 1px solid var(--border); margin-bottom: 20px; font-size: 0.85rem; }
+        .dot { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; margin-right: 10px; box-shadow: 0 0 10px #00ff88; }
 
-        /* SECCIÓN HUMANA: EL DOLOR REAL */
-        .human-talk { 
-            background: #0a0a0a; border-left: 3px solid var(--neon); padding: 45px; 
-            margin: 60px 0; border-radius: 0 20px 20px 0;
-        }
-        .human-talk h2 { font-size: 2rem; margin-top: 0; line-height: 1.2; color: white; }
-        .signature { font-style: italic; color: var(--neon); font-size: 1.1rem; margin-top: 25px; display: block; }
+        .orbit-container { position: relative; height: 400px; display: flex; align-items: center; justify-content: center; margin: 40px 0; background: radial-gradient(circle, rgba(0,242,255,0.05) 0%, transparent 70%); }
+        .center-node { width: 110px; height: 110px; background: white; border-radius: 20px; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 0 30px rgba(255,255,255,0.1); }
+        .orbit { position: absolute; border: 1px solid rgba(255,255,255,0.05); border-radius: 50%; animation: rotate linear infinite; }
+        .icon-node { position: absolute; width: 40px; height: 40px; background: #111; border: 1px solid var(--neon); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        .price-tag { 
-            background: linear-gradient(135deg, #0d0d0d, #151515); padding: 50px; border-radius: 30px; 
-            text-align: center; border: 1px solid #333; position: relative; overflow: hidden;
-        }
-        .price-tag::after { content: "INFRAESTRUCTURA SEGURA"; position: absolute; top: 20px; right: -40px; background: #222; color: var(--neon); font-size: 0.6rem; font-weight: 800; padding: 5px 40px; transform: rotate(45deg); border: 1px solid var(--neon); }
+        .section-title { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; margin-top: 60px; }
+        .line { flex-grow: 1; height: 1px; background: var(--border); }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin: 40px 0; }
+        .service-card { background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 25px; transition: 0.4s; display: flex; flex-direction: column; justify-content: space-between; }
+        .service-card:hover { border-color: var(--neon); transform: translateY(-5px); }
+
+        .credentials-box { background: rgba(0, 242, 255, 0.05); border: 1px dashed var(--neon); border-radius: 15px; padding: 20px; margin: 20px 0; font-size: 0.85rem; text-align: left; }
+        .key-icon { margin-right: 10px; color: var(--neon); }
+
+        .efficiency-box { background: linear-gradient(135deg, rgba(0, 242, 255, 0.05) 0%, transparent 100%); border: 1px solid var(--neon); border-radius: 30px; padding: 60px; text-align: center; margin-top: 60px; }
+        .price-tag { font-size: clamp(3rem, 10vw, 4.5rem); font-weight: 800; margin: 20px 0; }
         
-        .big-price { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; display: block; color: white; margin: 10px 0; }
-        
-        .btn { 
-            display: inline-block; width: 100%; max-width: 450px; padding: 20px; 
-            background: var(--crimson); color: white; text-decoration: none; 
-            font-weight: 800; border-radius: 12px; text-align: center; margin-top: 25px;
-            transition: 0.3s; font-size: 1rem; text-transform: uppercase;
-        }
-        .btn:hover { background: white; color: black; box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
+        .sapien-about { background: var(--glass); border: 1px solid var(--border); border-radius: 40px; padding: 60px; margin: 80px 0; position: relative; overflow: hidden; }
+        .sapien-about::before { content: "SAPIEN"; position: absolute; top: -20px; right: -20px; font-size: 8rem; font-weight: 900; opacity: 0.02; pointer-events: none; }
 
-        @media (max-width: 768px) {
-            header { padding: 60px 0 30px; }
-            .human-talk { padding: 25px; }
-            h1 { font-size: 2.5rem; }
-        }
+        .btn { display: inline-block; padding: 18px 35px; border-radius: 100px; text-decoration: none; font-weight: 800; text-transform: uppercase; transition: 0.3s; font-size: 0.8rem; margin-top: 20px; text-align: center; cursor: pointer; border: none; }
+        .btn-neon { background: var(--neon); color: black; }
+        .btn-outline { border: 1px solid var(--neon); color: var(--neon); }
+        .btn:hover { transform: scale(1.05); filter: brightness(1.2); box-shadow: 0 0 20px rgba(0, 242, 255, 0.3); }
+
+        footer { text-align: center; padding: 60px 0; opacity: 0.4; font-size: 0.75rem; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <div class="mono">Strategic_Partnership // Operational Excellence</div>
-            <h1>IMPULSAMOS SUS VENTAS EN EL MERCADO <span class="highlight">ANGLOSAJÓN.</span></h1>
-            <p style="font-size: 1.2rem; max-width: 750px; opacity: 0.8; margin-top: 20px;">
-                Especialistas en la expansión de productos naturales hacia <strong>Estados Unidos</strong>. Combinamos estrategias de Meta Ads con infraestructura de comunicación de alto desempeño.
+            <div class="referral-badge">
+                <span class="dot"></span> 
+                <span>Puente o Medio: <strong>Erika</strong></span>
+            </div>
+            <div class="mono typewriter">// Sapien_Network: Hola Cristian...</div>
+            <h1>SOLUCIONES REALES PARA <br> <span class="highlight">DEJAR DE PERDER DINERO.</span></h1>
+            <p style="max-width: 800px; font-size: 1.1rem; opacity: 0.8; margin-top: 20px;">
+                Sabemos que en operaciones de alto volumen, el dolor real es una tecnología que se queda corta y frena el cierre. Usted no necesita un "marketero" más; necesita un sistema blindado que soporte el crecimiento que su equipo merece.
             </p>
         </header>
 
-        <section class="grid">
-            <div class="card">
-                <div class="mono" style="margin-bottom: 15px;">// ADS_MANAGEMENT</div>
-                <h3>Resultados Medibles</h3>
-                <p>Gestionamos sus campañas en Meta con un enfoque absoluto en el retorno de inversión. Conectamos su marca con el público estadounidense que realmente necesita su producto.</p>
+        <div class="orbit-container">
+            <div class="center-node">
+                <div style="color:black; font-size:0.65rem; text-align:center; font-weight:800;">
+                    CALLCENTER<br>BUSINESS
+                </div>
             </div>
-            <div class="card">
-                <div class="mono" style="margin-bottom: 15px;">// OPERATIONAL_FLOW</div>
-                <h3>Eficiencia Operativa</h3>
-                <p>Integramos su flujo de ventas con telefonía IP de última generación. Sus asesores optimizan cada minuto, contactando leads calificados en tiempo real.</p>
+            
+            <div class="orbit" style="width: 220px; height: 220px; animation-duration: 8s;">
+                <div class="icon-node" style="top: -20px; left: 50%;">f</div>
+                <div class="icon-node" style="bottom: -20px; left: 50%;">G</div>
             </div>
-        </section>
 
-        <section class="human-talk">
-            <div class="mono" style="color: var(--neon);">// PERSPECTIVA_SAPIEN</div>
-            <h2>Hablemos de negocio a negocio.</h2>
-            <p style="font-size: 1.2rem; line-height: 1.7; opacity: 0.9;">
-                Gestionar un Contact Center y pretender escalar a nivel internacional requiere más que solo "ganas". Usted sabe que el costo de las llamadas, la baja calidad de los leads y la falta de seguimiento técnico terminan agotando sus recursos. <br><br>
-                Lo que yo le propongo es una <strong>alianza tecnológica</strong>. Mientras nosotros nos encargamos de la infraestructura de seguridad, la segmentación avanzada y la estabilidad de las comunicaciones, usted se concentra en lo que mejor hace: liderar su equipo y despachar pedidos. Transformamos sus costos fijos en una operación eficiente y rentable.
-            </p>
-            <span class="signature">— Sapien</span>
-        </section>
+            <div class="orbit" style="width: 350px; height: 350px; animation-duration: 15s; animation-direction: reverse;">
+                <div class="icon-node" style="top: 50%; left: -20px;">📞</div>
+                <div class="icon-node" style="top: 50%; right: -20px;">✉️</div>
+                <div class="icon-node" style="top: -20px; left: 50%;">🛒</div>
+            </div>
+        </div>
 
         <section>
-            <div class="price-tag">
-                <div class="mono">PLAN DE COMUNICACIÓN GLOBAL</div>
-                <p style="margin-bottom: 0; opacity: 0.7;">Inversión por Asesor Activo</p>
-                <span class="big-price">$158.600 <span style="font-size: 0.9rem; opacity: 0.5;">COP / MES</span></span>
-                
-                <div style="max-width: 500px; margin: 0 auto; text-align: left; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 15px; border: 1px solid #222;">
-                    <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8; font-size: 0.95rem;">
-                        <li>📞 <strong>Llamadas Ilimitadas:</strong> Conectividad total con USA y Canadá.</li>
-                        <li>💬 <strong>Mensajería de Cierre:</strong> Seguimiento efectivo vía SMS.</li>
-                        <li>⚙️ <strong>Marcador Predictivo:</strong> Maximice la productividad por hora/agente.</li>
-                        <li>🔒 <strong>Seguridad Avanzada:</strong> Infraestructura con encriptación de grado militar.</li>
-                    </ul>
+            <div class="section-title">
+                <span class="mono">Estrategia Digital y Ventas</span>
+                <div class="line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div>
+                        <h3 style="color: var(--neon);">🚀 Inyección de Leads 24/7</h3>
+                        <p>Basta de campañas que solo traen "curiosos". Diseñamos un ecosistema agresivo de Ads en Meta y Google que inyecta clientes calificados directo a su operación. No solo hacemos pauta; construimos una máquina de ventas que no descansa.</p>
+                        <ul style="list-style: none; padding: 0; font-size: 0.85rem; opacity: 0.8; margin-top: 15px;">
+                            <li>⚡ Landing Pages de ultra-velocidad.</li>
+                            <li>🎯 Segmentación por poder adquisitivo real.</li>
+                            <li>🔄 Retargeting para recuperar ventas perdidas.</li>
+                        </ul>
+                    </div>
+                    <a href="https://redsapien.github.io/sapiennatura/" class="btn btn-outline">Ver demo sitio de ventas</a>
                 </div>
-                
-                <a href="https://console.mightycall.com/Panel/Login/" class="btn">INICIAR DESPLIEGUE</a>
+                <div class="service-card">
+                    <div>
+                        <h3 style="color: var(--neon);">🛡️ Infraestructura VPS</h3>
+                        <p>Seguridad de grado militar. Protegemos su operación contra caídas y fugas de datos. Mientras su competencia sufre con sistemas lentos, usted opera sobre servidores privados blindados con disponibilidad total.</p>
+                        <ul style="list-style: none; padding: 0; font-size: 0.85rem; opacity: 0.8; margin-top: 15px;">
+                            <li>🔒 Encriptación de bases de datos.</li>
+                            <li>📡 Conexión redundante sin latencia.</li>
+                            <li>🛠️ Soporte técnico de respuesta inmediata.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div>
+                        <h3 style="color: var(--neon);">📞 Alcance Ilimitado HD</h3>
+                        <p>Comunicaciones masivas sin fronteras. Proporcione a sus agentes la claridad de voz que un cierre de alto valor requiere. Sin límites de minutos ni sorpresas.</p>
+                        
+                        <div class="credentials-box">
+                            <span class="mono" style="font-size: 0.6rem; display: block; margin-bottom: 10px;">// ACCESO_DEMO_SOFTWARE</span>
+                            <div style="margin-bottom: 5px;"><span class="key-icon">🔑</span><strong>Usuario:</strong> jackelinegarcia183@gmail.com</div>
+                            <div><span class="key-icon">🔒</span><strong>Clave:</strong> 1Yaqueline</div>
+                        </div>
+                    </div>
+                    <a href="https://console.mightycall.com/Panel/Login/" class="btn btn-outline">Ver sistema en acción</a>
+                </div>
             </div>
         </section>
 
-        <section style="text-align: center; padding: 60px 0;">
-            <div class="mono" style="margin-bottom: 20px;">DASHBOARD_PREVIEW</div>
-            <h2>Valide nuestra metodología.</h2>
-            <p style="opacity: 0.7; max-width: 600px; margin: 0 auto 30px;">Observe el flujo completo: desde la captación en redes sociales hasta la conversión en tienda web.</p>
-            <a href="https://redsapien.github.io/sapiennatura/" class="btn" style="background: transparent; border: 1px solid var(--neon); color: var(--neon); width: auto; padding: 15px 40px;">ACCEDER A LA DEMO INTERACTIVA</a>
+        <section class="sapien-about">
+            <div class="mono" style="margin-bottom: 20px;">// ¿Quiénes somos?</div>
+            <h2 style="font-size: 2.5rem; margin-top: 0;">Arquitectos de <span class="highlight">Soberanía Tecnológica.</span></h2>
+            <p style="font-size: 1.1rem; opacity: 0.9; max-width: 800px;">
+                En **Red Sapien** el primer paso es entender que **no somos una agencia de marketing tradicional**. Somos un nodo de innovación y eficiencia operativa. Mientras otros intentan venderle "gestión", nosotros le entregamos la propiedad total de su infraestructura.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div>
+                    <h4 style="color: var(--neon); margin-bottom: 10px;">🏆 Éxito Probado</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Hemos optimizado operaciones de Call Center reduciendo sus costos fijos en más de un 60% mediante la eliminación de intermediarios innecesarios.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--neon); margin-bottom: 10px;">💎 Lo que nos diferencia</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Usted es el dueño de sus servidores y sus datos. No creamos dependencia; creamos libertad y potencia operativa que otros simplemente no pueden replicar.</p>
+                </div>
+            </div>
         </section>
 
-        <footer style="text-align: center; padding: 40px; opacity: 0.3; font-size: 0.75rem; border-top: 1px solid #1a1a1a;">
-            © 2026 SAPIEN OPS | INFRAESTRUCTURA DE EXPORTACIÓN DIGITAL
+        <section class="efficiency-box">
+            <div class="mono">// Valor_Referencial_Base</div>
+            <h2 style="margin: 10px 0;">Referencia de Eficiencia por Agente</h2>
+            <p style="opacity: 0.7; max-width: 600px; margin: 0 auto;">
+                Para una operación con las capacidades ilimitadas que hemos mencionado, el valor base proyectado por las llamadas en el mercado es de:
+            </p>
+            
+            <div class="price-tag">$158.600 <span style="font-size: 1.1rem; opacity: 0.5;">COP / MES</span></div>
+            
+            <p style="font-size: 0.85rem; opacity: 0.6; margin-top: 10px;">
+                *Valor referencial de costo operativo para acceso ilimitado a comunicaciones.
+            </p>
+
+            <a href="https://wa.me/573207376174" class="btn btn-neon">Quiero que hablemos</a>
+        </section>
+
+        <div style="text-align: center; margin-top: 40px;">
+             <a href="https://wa.me/573207376174" class="btn btn-outline" style="border-radius: 15px;">Contactarnos</a>
+        </div>
+
+        <footer>
+            SAPIEN NETWORK OPS // INFRAESTRUCTURA Y ESTRATEGIA <br>
+            MANIZALES - COLOMBIA | PUENTE ERIKA | 2026
         </footer>
     </div>
 
